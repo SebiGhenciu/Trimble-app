@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Announcement } from './announcement';
 import { Title } from '@angular/platform-browser';
 import { Category } from './category';
@@ -8,31 +8,46 @@ import { Category } from './category';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'notifications-app';
 
   announcements: Announcement[] = [
     {
-      title: 'titlu 1',
-      message: 'Acesta este un mesaj 1',
-      author: 'Autor 1',
+      title: 'Course.',
+      message: 'Course for today will start at 13:00',
+      author: 'Autor cu nr 1',
       category: { id: 1, name: 'name1' },
     },
 
     {
-      title: 'title 2',
-      message: 'Acesta este un mesaj 2',
-      author: 'autor 2',
+      title: 'General.',
+      message: 'General for today will start at 15:00',
+      author: 'Tom',
       category: { id: 2, name: 'name2' },
     },
 
     {
-      title: 'title 3',
-      message: 'Acesta este un mesaj 3',
-      author: 'autor 3',
+      title: 'Laboratory',
+      message: 'Laboratory will not be avalabile today',
+      author: 'Mike',
       category: { id: 3, name: 'name3' },
     },
   ];
 
   selectedCategory: Category;
+  filteredAnnouncement: Announcement[];
+
+  ngOnInit() {
+    this.filteredAnnouncement = this.announcements;
+  }
+
+  OnCategorySelected(category: Category) {
+    if (category === undefined) {
+      this.filteredAnnouncement = this.announcements;
+    }
+    this.selectedCategory = category;
+    this.announcements = this.announcements.filter(
+      (announcement) => announcement.category.id === category.id
+    );
+  }
 }

@@ -1,25 +1,5 @@
-<div>
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="OnSelectedCategory($event, categories[0])"
-  >
-    Course
-  </button>
-
-  <button
-    mat-raised-button
-    color="accent"
-    (click)="OnSelectedCategory($event, categories[1])"
-  >
-    General
-  </button>
-
-  <button
-    mat-raised-button
-    color="warn"
-    (click)="OnSelectedCategory($event, categories[2])"
-  >
-    Laboratory
+<div *ngFor="let category of categories">
+  <button mat-raised-button (click)="OnSelectedCategory(category)">
+    {{ category.name }}
   </button>
 </div>

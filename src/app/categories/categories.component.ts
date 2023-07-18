@@ -33,7 +33,6 @@ export class CategoriesComponent implements OnInit {
     new EventEmitter<Category>();
 
   OnSelectedCategory(event: any, category: Category) {
-    event.preventDefault;
     this.selectedCategory.emit(category);
   }
 }
