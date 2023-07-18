@@ -1,5 +1,8 @@
-<div *ngFor="let category of categories">
-  <button mat-raised-button (click)="OnSelectedCategory(category)">
-    {{ category.name }}
-  </button>
+<div class="category-container">
+  <div *ngFor="let category of categories">
+    <button mat-raised-button (click)="OnSelectedCategory(category)">
+      {{ category.name }}
+    </button>
+  </div>
+  <button mat-raised-button (click)="OnSelectedCategory(undefined)">All</button>
 </div>

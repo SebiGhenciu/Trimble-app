@@ -1,5 +1,5 @@
 <div class="announcement-container">
   <h1>{{ announcement.title }}</h1>
   <p>{{ announcement.message }}</p>
-  <p>{{ announcement.author }}</p>
+  <p>{{ announcement.author | name : announcement.author }}</p>
 </div>

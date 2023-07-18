@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Course.',
       message: 'Course for today will start at 13:00',
-      author: 'Autor cu nr 1',
+      author: ' orice',
       category: { id: 1, name: 'name1' },
     },
 
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
       this.filteredAnnouncement = this.announcements;
     }
     this.selectedCategory = category;
-    this.announcements = this.announcements.filter(
+    this.filteredAnnouncement = this.announcements.filter(
       (announcement) => announcement.category.id === category.id
     );
   }

@@ -32,7 +32,7 @@ export class CategoriesComponent implements OnInit {
   @Output() selectedCategory: EventEmitter<Category> =
     new EventEmitter<Category>();
 
-  OnSelectedCategory(event: any, category: Category) {
+  OnSelectedCategory(category: Category) {
     this.selectedCategory.emit(category);
   }
 }
