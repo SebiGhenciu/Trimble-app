@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { EmptyComponent } from './empty/empty.component';
 import { RouterModule } from '@angular/router';
+import { AnnouncementService } from './service/services/announcement.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { RouterModule } from '@angular/router';
     MatSelectModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AnnouncementService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

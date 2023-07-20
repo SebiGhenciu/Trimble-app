@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Category } from '../category';
+import { AnnouncementComponent } from '../announcement/announcement.component';
+import { AnnouncementService } from '../service/services/announcement.service';
+import { Announcement } from '../announcement';
 
 @Component({
   selector: 'app-add-announcement-form',
@@ -10,7 +13,9 @@ export class AddAnnouncementFormComponent {
   title: string;
   author: string;
   message: string;
-  selected: string;
+  selected: number;
+
+  constructor(private announcementService: AnnouncementService) {}
 
   categories: Category[] = [
     {
@@ -30,16 +35,24 @@ export class AddAnnouncementFormComponent {
   ];
 
   AddAnnouncement() {
+    const announcement: Announcement = {
+      title: this.title,
+      message: this.message,
+      author: this.author,
+      category: this.categories.find((c) => c.id === this.selected),
+    };
+
     console.log('title', this.title);
     console.log('author', this.author);
     console.log('message', this.message);
-    console.log('selected', this.selected);
+    console.log('category', this.selected);
+    this.announcementService.addAnnouncement(announcement);
   }
 
   onSubmit() {
     console.log('title', this.title);
     console.log('author', this.author);
     console.log('message', this.message);
-    console.log('selected', this.selected);
+    console.log('category', this.selected);
   }
 }
