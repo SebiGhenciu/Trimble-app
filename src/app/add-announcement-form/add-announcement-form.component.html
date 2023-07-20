@@ -1,0 +1,50 @@
+<form (ngSubmit)="onSubmit()">
+  <tr>
+    <mat-label> Title </mat-label>
+    <input
+      matInput
+      placeholder="Title"
+      [(ngModel)]="title"
+      name="title"
+      required
+    />
+  </tr>
+
+  <tr>
+    <mat-label> Author </mat-label>
+    <input
+      matInput
+      placeholder="Author"
+      [(ngModel)]="author"
+      name="author"
+      required
+    />
+  </tr>
+
+  <tr>
+    <mat-label> Leave a message </mat-label>
+    <textarea
+      matInput
+      placeholder="..."
+      [(ngModel)]="message"
+      name="message"
+    ></textarea>
+  </tr>
+
+  <tr>
+    <mat-label>Select Category</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option *ngFor="let category of categories" [value]="category.name">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </tr>
+
+  <tr>
+    <button mat-raised-button color="warn" (click)="AddAnnouncement()">
+      Add Announcement
+    </button>
+  </tr>
+</form>
+
+<button mat-raised-button color="warn" [routerLink]="['']">Cancel</button>
