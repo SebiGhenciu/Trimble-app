@@ -4,6 +4,7 @@ import { AnnouncementComponent } from '../announcement/announcement.component';
 import { AnnouncementService } from '../service/services/announcement.service';
 import { Announcement } from '../announcement';
 import { Subscriber, subscribeOn } from 'rxjs';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-add-announcement-form',
@@ -16,24 +17,19 @@ export class AddAnnouncementFormComponent {
   message: string;
   selected: string;
 
-  constructor(private announcementService: AnnouncementService) {}
+  constructor(
+    private announcementService: AnnouncementService,
+    private categoriesService: CategoryService
+  ) {}
 
-  categories: Category[] = [
-    {
-      id: '1',
-      name: 'Course',
-    },
-
-    {
-      id: '2',
-      name: 'General',
-    },
-
-    {
-      id: '3',
-      name: 'Laboratory',
-    },
-  ];
+  categories: Category[];
+  ngOnInit(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
+  }
 
   AddAnnouncement() {
     const announcement: Announcement = {

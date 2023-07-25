@@ -3,6 +3,7 @@ import { Announcement } from '../announcement';
 import { Category } from '../category';
 import { AnnouncementService } from '../service/services/announcement.service';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-edit',
@@ -18,7 +19,8 @@ export class EditComponent {
 
   constructor(
     private router: ActivatedRoute,
-    private announcementService: AnnouncementService
+    private announcementService: AnnouncementService,
+    private categoriesService: CategoryService
   ) {
     this.router.paramMap.subscribe((params) => {
       this.id = params.get('id');
@@ -26,22 +28,14 @@ export class EditComponent {
     });
   }
 
-  categories: Category[] = [
-    {
-      id: '1',
-      name: 'Course',
-    },
-
-    {
-      id: '2',
-      name: 'General',
-    },
-
-    {
-      id: '3',
-      name: 'Laboratory',
-    },
-  ];
+  categories: Category[];
+  ngOnInit(): void {
+    this.categoriesService
+      .getCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
+  }
 
   onSubmit() {
     const announcement: Announcement = {
