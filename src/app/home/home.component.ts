@@ -34,7 +34,7 @@ export class HomeComponent {
     }
     this.selectedCategory = category;
     this.filteredAnnouncement = this.announcements.filter(
-      (announcement) => announcement.category.id === category.id
+      (announcement) => announcement.categoryId === category.id
     );
   }
 }

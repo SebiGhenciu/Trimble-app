@@ -1,48 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Announcement } from 'src/app/announcement';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnnouncementService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   serviceCall() {
     console.log('Service was called');
   }
-
-  announcements: Announcement[] = [
-    {
-      title: 'Course.',
-      message: 'Course for today will start at 13:00',
-      author: ' orice',
-      category: { id: 1, name: 'name1' },
-    },
-
-    {
-      title: 'General.',
-      message: 'General for today will start at 15:00',
-      author: 'Tom',
-      category: { id: 2, name: 'name2' },
-    },
-
-    {
-      title: 'Laboratory',
-      message: 'Laboratory will not be avalabile today',
-      author: 'Mike',
-      category: { id: 3, name: 'name3' },
-    },
-  ];
+  readonly httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  baseURL =
+    'https://newsapi20221108120432.azurewebsites.net/api/Announcements/';
 
   getAnnouncements(): Observable<Announcement[]> {
-    return new Observable<Announcement[]>((observer) => {
-      observer.next(this.announcements);
-      observer.complete();
-    });
+    return this.httpClient.get<Announcement[]>(this.baseURL);
   }
 
   addAnnouncement(announcement: Announcement) {
-    this.announcements.push(announcement);
+    return this.httpClient.post<Announcement>(this.baseURL, announcement);
+  }
+
+  deleteAnnouncement(id: string) {
+    return this.httpClient.delete(this.baseURL + id, this.httpOptions);
+  }
+
+  editAnnouncement(announcement: Announcement) {
+    return this.httpClient.put(
+      this.baseURL + announcement.id,
+      announcement,
+      this.httpOptions
+    );
   }
 }

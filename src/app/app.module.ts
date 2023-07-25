@@ -15,6 +15,7 @@ import { EmptyComponent } from './empty/empty.component';
 import { RouterModule } from '@angular/router';
 import { AnnouncementService } from './service/services/announcement.service';
 import { EditComponent } from './edit/edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EditComponent } from './edit/edit.component';
     BrowserAnimationsModule,
     MatSelectModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [AnnouncementService],
   bootstrap: [AppComponent],

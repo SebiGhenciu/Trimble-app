@@ -14,17 +14,17 @@ export class CategoriesComponent implements OnInit {
 
   categories: Category[] = [
     {
-      id: 1,
+      id: '1',
       name: 'Course',
     },
 
     {
-      id: 2,
+      id: '2',
       name: 'General',
     },
 
     {
-      id: 3,
+      id: '3',
       name: 'Laboratory',
     },
   ];

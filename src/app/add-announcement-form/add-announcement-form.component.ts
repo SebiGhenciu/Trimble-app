@@ -3,6 +3,7 @@ import { Category } from '../category';
 import { AnnouncementComponent } from '../announcement/announcement.component';
 import { AnnouncementService } from '../service/services/announcement.service';
 import { Announcement } from '../announcement';
+import { Subscriber, subscribeOn } from 'rxjs';
 
 @Component({
   selector: 'app-add-announcement-form',
@@ -13,23 +14,23 @@ export class AddAnnouncementFormComponent {
   title: string;
   author: string;
   message: string;
-  selected: number;
+  selected: string;
 
   constructor(private announcementService: AnnouncementService) {}
 
   categories: Category[] = [
     {
-      id: 1,
+      id: '1',
       name: 'Course',
     },
 
     {
-      id: 2,
+      id: '2',
       name: 'General',
     },
 
     {
-      id: 3,
+      id: '3',
       name: 'Laboratory',
     },
   ];
@@ -39,14 +40,16 @@ export class AddAnnouncementFormComponent {
       title: this.title,
       message: this.message,
       author: this.author,
-      category: this.categories.find((c) => c.id === this.selected),
+      categoryId: this.selected,
+      imageUrl: '',
+      id: '',
     };
 
     console.log('title', this.title);
     console.log('author', this.author);
     console.log('message', this.message);
     console.log('category', this.selected);
-    this.announcementService.addAnnouncement(announcement);
+    this.announcementService.addAnnouncement(announcement).subscribe();
   }
 
   onSubmit() {

@@ -3,8 +3,13 @@
   <p>{{ announcement.message }}</p>
   <p>{{ announcement.author | name : announcement.author }}</p>
 
-  <button mat-raised-button color="warn" [routerLink]="'/edit'">Edit</button>
-  <button mat-raised-button color="warn" [routerLink]="'/delete'">
+  <button
+    mat-raised-button
+    color="warn"
+    [routerLink]="['/edit', announcement.id]"
+  >
+    Edit</button
+  ><button color="accent" mat-raised-button (click)="DeleteAnnouncement()">
     Delete
   </button>
 </div>
