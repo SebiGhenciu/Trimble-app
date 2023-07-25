@@ -1,4 +1,4 @@
-<form class="add-ann-cont" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()">
   <tr>
     <mat-label> Title </mat-label>
     <input
@@ -45,9 +45,9 @@
       mat-raised-button
       color="warn"
       [routerLink]="['']"
-      (click)="AddAnnouncement()"
+      (click)="EditAnnouncement()"
     >
-      Add Announcement
+      Edit Announcement
     </button>
   </tr>
 </form>

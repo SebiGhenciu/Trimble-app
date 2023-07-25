@@ -4,10 +4,12 @@ import { AddAnnouncementFormComponent } from './add-announcement-form/add-announ
 import { RouterModule, Routes } from '@angular/router';
 import { EmptyComponent } from './empty/empty.component';
 import { HomeComponent } from './home/home.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'add', component: AddAnnouncementFormComponent },
+  { path: 'edit', component: EditComponent },
   { path: '**', component: EmptyComponent },
 ];
 

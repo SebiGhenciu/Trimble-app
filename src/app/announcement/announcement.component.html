@@ -2,4 +2,9 @@
   <h1>{{ announcement.title }}</h1>
   <p>{{ announcement.message }}</p>
   <p>{{ announcement.author | name : announcement.author }}</p>
+
+  <button mat-raised-button color="warn" [routerLink]="'/edit'">Edit</button>
+  <button mat-raised-button color="warn" [routerLink]="'/delete'">
+    Delete
+  </button>
 </div>

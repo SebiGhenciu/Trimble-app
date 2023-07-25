@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { EmptyComponent } from './empty/empty.component';
 import { RouterModule } from '@angular/router';
 import { AnnouncementService } from './service/services/announcement.service';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AnnouncementService } from './service/services/announcement.service';
     AddAnnouncementFormComponent,
     HomeComponent,
     EmptyComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
